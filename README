@@ -1,0 +1,40 @@
+gmane-fetch
+===========
+
+Being tired of reading lkml through IMAP, I decided to search for faster
+solutions. I came across the exporting facility that gmane provides [
+http://gmane.org/export.php ] and quickly wrote a couple of scripts to fetch
+the messages for me.
+
+Usage
+-----
+Fill the .listname file with the full "gmane" name of the list, and run
+update.sh. An mbox file will be created; the name of the file is the latest
+gmane message of the selected list.
+
+Example:
+
+	echo "comp.version-control.patchwork" > .listname
+	./update.sh
+	Downloading messages 0-20... OK
+	Downloading messages 20-40... OK
+	[...]
+	Downloading messages 500-504... OK
+
+Now we can read the first 504 messages of the list, for instance with
+
+	mutt -f 504
+
+You may not want to retrieve all messages in a list, especially if the list
+has heavy traffic. If we just want to retrieve messages from id 500 onwards,
+we'd add this line to the instructions above, right before ./update.sh:
+
+	touch 499
+
+The gmane id of a message is very simple to retrieve. I normally browse the
+list archives of the one I'm interested in through gmane's web interface;
+the gmane id of each message is at the end of each message's hyperlink.
+
+Author
+------
+Emilio G. Cota <cota@braap.org>
