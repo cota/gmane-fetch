@@ -26,7 +26,7 @@ Now we can read the first 504 messages of the list, for instance with
 	mutt -f 504
 
 You may not want to retrieve all messages in a list, especially if the list
-has heavy traffic. If we just want to retrieve messages from id 500 onwards,
+has heavy traffic. If we just wanted to retrieve messages from id 500 onwards,
 we'd add this line to the instructions above, right before ./update.sh:
 
 	touch 499
